@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Users List</title>
+</head>
+<body>
+<h1>Users</h1>
+
+<!-- Ссылка для создания нового пользователя -->
+<div style="margin-bottom: 15px;">
+    <a th:href="@{/user/new}" style="text-decoration: none; background-color: #309a39; color: #fffcfc; padding: 8px 15px; border-radius: 4px;">
+        New User
+    </a>
+</div>
+
+<table border="1">
+    <thead>
+    <tr>
+        <th>ID</th>
+        <th>Email</th>
+        <!-- Добавьте другие заголовки столбцов по необходимости -->
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="user : ${users}">
+        <td>
+            <a th:href="@{/user/{id}(id=${user.getId()})}" th:text="${user.getId()}"></a>
+        </td>
+        <td th:text="${user.getEmail()}"></td>
+        <!-- Добавьте другие поля пользователя по необходимости -->
+    </tr>
+    <div th:if="${message}" style="color:#178000;" th:text="${message}"></div>
+    </tbody>
+</table>
+</body>
+</html>
