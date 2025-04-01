@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>User Details</title>
+</head>
+<body>
+<div th:insert="~{fragments/header :: header}"></div>
+
+<h1>User Details</h1>
+<div>
+    <p><strong>ID:</strong> <span th:text="${user.id}"></span></p>
+    <p><strong>Username:</strong> <span th:text="${user.username}"></span></p>
+    <p><strong>Email:</strong> <span th:text="${user.email}"></span></p>
+</div>
+
+<!-- Update button (GET request) -->
+<div style="margin-top: 15px; display: flex; gap: 10px;">
+    <a th:href="@{/user/update/{id}(id=${user.id})}">
+        <button>Update</button>
+    </a>
+    <form th:action="@{/user/delete/{id}(id=${user.id})}" method="post"
+          onsubmit="return confirm('Удалить пользователя?')">
+        <button type="submit">Delete</button>
+    </form>
+</div>
+
+</body>
+</html>

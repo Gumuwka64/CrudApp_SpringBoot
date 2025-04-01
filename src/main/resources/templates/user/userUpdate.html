@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Edit User</title>
+</head>
+<body>
+<div th:insert="~{fragments/header :: header}"></div>
+<h1>Edit User</h1>
+<form th:action="@{/user/update}" method="post">
+    <input type="hidden" name="id" th:value="${user.id}">
+
+    <div>
+        <label>Username:</label>
+        <input type="text" name="username" th:value="${user.username}">
+    </div>
+
+    <div>
+        <label>Email:</label>
+        <input type="email" name="email" th:value="${user.email}">
+    </div>
+
+    <div>
+        <label>New Password (оставьте пустым, если не меняется):</label>
+        <input type="password" name="newPassword">
+    </div>
+
+    <button type="submit">Обновить</button>
+</form>
+<a th:href="@{/user/{id}(id=${user.id})}">Cancel</a>
+</body>
+</html>
