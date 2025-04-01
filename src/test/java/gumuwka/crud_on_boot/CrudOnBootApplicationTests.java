@@ -16,7 +16,7 @@ class CrudOnBootApplicationTests {
 
     @Test
     void saveAndFindUser() {
-        User user = new User("test","test@mail.com","test");
+        User user = new User("test", "test@mail.com");
         userRepository.save(user);
 
         User found = userRepository.findById(user.getId()).orElseThrow();
